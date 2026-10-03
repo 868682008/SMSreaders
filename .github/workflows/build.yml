@@ -1,0 +1,25 @@
+name: Build Tweak
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Theos
+        uses: Randomblock1/theos-action@v1
+        with:
+           theos-dir: 'theos'
+
+      - name: Build package
+        run: |
+          export THEOS=${{ github.workspace }}/theos
+          make package THEOS_PACKAGE_SCHEME=rootless
+
+      - name: Upload deb
+        uses: actions/upload-artifact@v4
+        with:
+          name: SMSReader-deb
+          path: packages/*.deb
