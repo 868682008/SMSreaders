@@ -1,0 +1,9 @@
+Package: com.yufei.smsreader
+Name: SMSReader
+Version: 0.0.1
+Architecture: iphoneos-arm64
+Description: 自动朗读短信中的验证码
+Maintainer: yufei
+Author: yufei
+Section: Tweaks
+Depends: ellekit, firmware (>= 16.0)
